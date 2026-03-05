@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: whatsapp-otp-gateway
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: API_KEY
+        generateValue: true
+      - key: SESSION_NAMES
+        value: personal
+      - key: MAX_OTP_HISTORY
+        value: 50
